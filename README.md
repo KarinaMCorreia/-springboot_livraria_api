@@ -11,8 +11,9 @@ Nesse primeiro desafio, criaremos o cadastro e a listagem de autores e ao longo 
 
 ### Features
 
- Endpoint autor e livro método POST
  Endpoint autor e livro método GET
+ Endpoint autor e livro método POST
+
 
 ### Requisitos mínimos
 
