@@ -10,6 +10,7 @@ import lombok.Setter;
 public class AutorDto {
 	
 	
+	private Long id;
 	private String nome;
 	private String email;
 	private LocalDate dataNascimento;

@@ -7,28 +7,26 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import lombok.Getter;
 import lombok.Setter;
-
-
-
 
 @Getter
 @Setter
 public class LivroFormDto {
-	
-	
+
 	@NotEmpty
 	@Size(min = 10)
-	private String titulo;             //Título deve ser obrigatório e ter no mínimo 10 caracteres;
+	private String titulo;
 
 	@PastOrPresent
-	private LocalDate dataLancamento;  //Data de lançamento deve ser uma data menor ou igual a data atual;
+	private LocalDate dataLancamento;
 
 	@DecimalMin("100")
-	private int numeroDePaginas;       //O número de páginas deve ser maior ou igual a 100.
-	
-	private AutorDto autorDto;
-	
+	private Integer numeroDePaginas;
+
+	@JsonAlias("autor_id")
+	private Long autorID;
 
 }

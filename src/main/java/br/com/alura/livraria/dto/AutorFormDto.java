@@ -2,8 +2,10 @@ package br.com.alura.livraria.dto;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,16 +13,15 @@ import lombok.Setter;
 @Setter
 public class AutorFormDto {
 
-	@NotEmpty
+	private Long id;
+	@NotBlank
+	@Size(min = 10)
 	private String nome;
-
-	@NotEmpty
+	@NotBlank
 	private String email;
-	
-	@PastOrPresent
+	@NotBlank
 	private LocalDate dataNascimento;
-
-	@NotEmpty
-	private String curriculo;
+	@DecimalMin("100")
+	private String miniCurriculo;
 
 }
