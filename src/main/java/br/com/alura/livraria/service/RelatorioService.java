@@ -5,17 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.alura.livraria.dto.QuantidadeDeLivrosDto;
+import br.com.alura.livraria.dto.QuantidadeDeLivrosDTO;
 import br.com.alura.livraria.repository.LivroRepository;
 
 @Service
-public class  RelatorioService  {
+public class RelatorioService {
 	
 	@Autowired
-    private LivroRepository repository;
+	private LivroRepository repository;
 	
-	public List<QuantidadeDeLivrosDto> relatorioQuantidadeDeLivros() {
-		
+	public List<QuantidadeDeLivrosDTO> relatorioQuantidadeDeLivros(){
 		return repository.relatorioQuantidadeDeLivros();
 	}
 

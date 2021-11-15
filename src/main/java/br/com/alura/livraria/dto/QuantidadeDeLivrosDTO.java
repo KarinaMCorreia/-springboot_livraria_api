@@ -5,10 +5,10 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class QuantidadeDeLivrosDto {
+public class QuantidadeDeLivrosDTO {
 	
 	private String autor;
-    private Long quantidadeLivros;
-    private Double percentual;
+	private Long quantidade;
+	private Double percentual;
 
 }

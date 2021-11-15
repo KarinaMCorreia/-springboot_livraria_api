@@ -7,12 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LivroDto {
+public class LivroDTO {
 
 	private Long id;
 	private String titulo;
 	private LocalDate dataLancamento;
-	private Integer numeroDePaginas;
-	private AutorDto autor;
-
+	private int numeroDePaginas;
+	private AutorDTO autor;
 }

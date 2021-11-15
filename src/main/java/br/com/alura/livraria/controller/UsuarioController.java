@@ -16,35 +16,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.alura.livraria.dto.LivroDto;
-import br.com.alura.livraria.dto.LivroFormDto;
-import br.com.alura.livraria.service.LivrosService;
+import br.com.alura.livraria.dto.UsuarioDTO;
+import br.com.alura.livraria.dto.UsuarioFormDTO;
+import br.com.alura.livraria.service.UsuarioService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/livros")
-public class LivrosController {
+@RequestMapping("/usuarios")
+@Api(tags= "Usuario")
+public class UsuarioController {
+
 
 	@Autowired
-	private LivrosService service;
+	private UsuarioService service;
 
 	@GetMapping
-	public Page<LivroDto> listar(@PageableDefault(size = 10) Pageable paginacao) {
-
+	@ApiOperation("Listar usuarios")
+	public Page<UsuarioDTO> listar(@PageableDefault(size = 10) Pageable paginacao) {
 		return service.listar(paginacao);
-
+		
 	}
 
 	@PostMapping
-	public ResponseEntity<LivroDto> cadastrar(@RequestBody @Valid LivroFormDto dto, UriComponentsBuilder uriBuilder) {
-
-		LivroDto livroDto = service.cadastrar(dto);
-
+	@ApiOperation("Cadastrar novo usuario")
+	public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody @Valid UsuarioFormDTO dto,
+			UriComponentsBuilder uriBuilder) {
+		UsuarioDTO usuarioDTO = service.cadastrar(dto);
+		
 		URI uri = uriBuilder
-				.path("/livros/{id}")
-				.buildAndExpand(livroDto.getId())
+				.path("/transacoes/{id}")
+				.buildAndExpand(usuarioDTO.getId())
 				.toUri();
-		return ResponseEntity.created(uri).body(livroDto);
-
+		return ResponseEntity.created(uri).body(usuarioDTO);
+		
 	}
-
+	
 }
