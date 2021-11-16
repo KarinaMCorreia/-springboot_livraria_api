@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.alura.livraria.dto.AutorDTO;
 import br.com.alura.livraria.dto.AutorFormDTO;
 import br.com.alura.livraria.repository.AutorRepository;
-import br.com.alura.livraria.service.AutorService;
 
 @ExtendWith(MockitoExtension.class)
 class AutorServiceTest {

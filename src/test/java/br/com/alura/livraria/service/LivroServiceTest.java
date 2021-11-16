@@ -18,7 +18,6 @@ import br.com.alura.livraria.dto.LivroDTO;
 import br.com.alura.livraria.dto.LivroFormDTO;
 import br.com.alura.livraria.repository.AutorRepository;
 import br.com.alura.livraria.repository.LivroRepository;
-import br.com.alura.livraria.service.LivroService;
 
 @ExtendWith(MockitoExtension.class)
 class LivroServiceTest {
