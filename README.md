@@ -1,5 +1,5 @@
  <h1 align="center">
-    Alura - Bootcamp Módulo 3
+    Alura - Bootcamp Módulo 6
 </h1> 
 
 
