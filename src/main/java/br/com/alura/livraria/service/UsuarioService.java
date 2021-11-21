@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.alura.livraria.dto.UsuarioDTO;
 import br.com.alura.livraria.dto.UsuarioFormDTO;
+import br.com.alura.livraria.infra.EnviadorDeEmail;
 import br.com.alura.livraria.modelo.Perfil;
 import br.com.alura.livraria.modelo.Usuario;
 import br.com.alura.livraria.repository.PerfilRepository;
@@ -24,19 +25,23 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	@Autowired
+	private EnviadorDeEmail enviadorDeEmail;
+
+	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private PerfilRepository perfilRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	public Page<UsuarioDTO> listar(Pageable paginacao) {
 		Page<Usuario> usuarios = usuarioRepository.findAll(paginacao);
 		return usuarios.map(t -> modelMapper.map(t, UsuarioDTO.class));
 
 	}
+
 	@Transactional
 	public UsuarioDTO cadastrar(UsuarioFormDTO dto) {
 		
@@ -49,6 +54,15 @@ public class UsuarioService {
 		usuario.setSenha(bCryptPasswordEncoder.encode(senha));
 		
 		usuarioRepository.save(usuario);
+		
+		String destinatario = usuario.getEmail();
+        String assunto =  " Carteira - Bem vindo (a) " ;
+		
+		String mensagem =  String.format( " Olá %s!\n\n "
+				+  " Segue seus dados de acesso ao sistema Carteira: "
+				+  " \n Login:%s "
+				+  " \n Senha:%s " , usuario . getNome (), usuario . getLogin (), senha);
+		enviadorDeEmail.enviarEmail(destinatario , assunto, mensagem);
 		
 		return modelMapper.map(usuario, UsuarioDTO.class);
 		
