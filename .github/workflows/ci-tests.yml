@@ -2,7 +2,7 @@ name: Executar Testes Automatizados
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   test:
