@@ -51,7 +51,7 @@ class LivroControllerTest {
 
 	@BeforeEach
 	public void gerarToken() {
-		Usuario logado = new Usuario("Karina", "karina", "123456");
+		Usuario logado = new Usuario("Karina", "karina", "123456","email@email.com");
 		Perfil admin = perfilRepository.findById(1l).get();
 		logado.adicionarPerfil(admin);
 		usuarioRepository.save(logado);

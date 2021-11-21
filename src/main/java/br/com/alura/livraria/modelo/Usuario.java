@@ -53,10 +53,11 @@ public class Usuario implements UserDetails {
 			inverseJoinColumns = @JoinColumn(name = "perfil_id"))
 	private List<Perfil> perfis = new ArrayList<>();
 	
-	public Usuario(String nome, String login, String senha) {
+	public Usuario(String nome, String login, String senha, String email) {
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
+		this.email = email;
 	}
 
 	@Override
