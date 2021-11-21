@@ -52,6 +52,6 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "carteira-api-rodrigo-rita"
-          heroku_email: "r.caneppele@gmail.com"
+          heroku_app_name: "-springboot_livraria_api"
+          heroku_email: "ka.mendes.correia@gmail.com"
           usedocker: true
